@@ -16,7 +16,11 @@ script:
  - make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules -j24
  - echo "done"
  - arm-linux-gnueabihf-objdump -h vmlinux | pastebinit
- - arm-linux-gnueabihf-objdump -axstf vmlinux 2>&1 | pastebinit
+ - arm-linux-gnueabihf-objdump -a vmlinux | pastebinit 
+ - arm-linux-gnueabihf-objdump -x vmlinux | pastebinit 
+ - arm-linux-gnueabihf-objdump -s vmlinux | pastebinit 
+ - arm-linux-gnueabihf-objdump -t vmlinux | pastebinit 
+ - arm-linux-gnueabihf-objdump -f vmlinux | pastebinit
  - echo "------------------------------------------------------"
  - arm-linux-gnueabihf-objdump -h vmlinux
  
