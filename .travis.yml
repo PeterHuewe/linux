@@ -1,0 +1,20 @@
+language: c
+compiler:
+  - gcc
+
+sudo: false
+addons:
+  apt:
+      packages:
+        - bc
+
+
+script: 
+ - git clone --depth=1 https://github.com/raspberrypi/tools rpi-tools
+ - export PATH=$PATH:$(pwd)/rpi-tools/arm-bcm2708/arm-linux-gnueabihf/bin/
+ - make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
+ - make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules -j24
+ - arm-linux-gnueabihf-objdump -axstf vmlinux
+ - echo "------------------------------------------------------"
+ - arm-linux-gnueabihf-objdump -h vmlinux
+ 
