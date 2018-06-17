@@ -8,7 +8,6 @@ addons:
       packages:
         - bc
 
-
 script: 
  - git clone --depth=1 https://github.com/raspberrypi/tools rpi-tools
  - export PATH=$PATH:$(pwd)/rpi-tools/arm-bcm2708/arm-linux-gnueabihf/bin/
