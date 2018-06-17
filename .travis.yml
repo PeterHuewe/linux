@@ -7,14 +7,15 @@ addons:
   apt:
       packages:
         - bc
+        - bionic
 
 script: 
  - git clone --depth=1 https://github.com/raspberrypi/tools rpi-tools
  - export PATH=$PATH:$(pwd)/rpi-tools/arm-bcm2708/arm-linux-gnueabihf/bin/
  - make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
  - make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules -j24
- - arm-linux-gnueabihf-objdump -h vmlinux | pastebininit
- - arm-linux-gnueabihf-objdump -axstf vmlinux 2>&1 | pastebininit
+ - arm-linux-gnueabihf-objdump -h vmlinux | pastebinit
+ - arm-linux-gnueabihf-objdump -axstf vmlinux 2>&1 | pastebinit
  - echo "------------------------------------------------------"
  - arm-linux-gnueabihf-objdump -h vmlinux
  
